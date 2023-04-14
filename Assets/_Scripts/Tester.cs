@@ -17,8 +17,9 @@ public class Tester : MonoBehaviour
         if(variables.continuousTurnProvider!= null)
         {
             Debug.Log("NICE");
-            variables.continuousTurnProvider.enabled = false;
+            //variables.continuousTurnProvider.enabled = false;
         }
+        Debug.Log(UnityEngine.Rendering.GraphicsSettings.renderPipelineAsset.GetType().Name);
     }
 
     
