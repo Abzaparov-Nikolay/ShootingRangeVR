@@ -11,8 +11,10 @@ GameObject:
   - component: {fileID: 712153544202649820}
   - component: {fileID: 6022316308871666455}
   - component: {fileID: 8715873368273971798}
+  - component: {fileID: 4923989623824704455}
   - component: {fileID: 6776453240360364417}
   - component: {fileID: 8273895854531371434}
+  - component: {fileID: 1674914855772933550}
   m_Layer: 0
   m_Name: M4_Complete
   m_TagString: Untagged
@@ -56,10 +58,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b8b895b7d69df54f8dec8dad38de764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 50
   bulletPrefab: {fileID: 3422242703252899, guid: e5889ba7aa841534da025d07b3274df9, type: 3}
   spawnBullet: {fileID: 6133400356536054270}
   fireAudio: {fileID: 8273895854531371434}
+  OnFire:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4923989623824704455}
+        m_TargetAssemblyTypeName: HapticFeedback, Assembly-CSharp
+        m_MethodName: GiveFeedback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!54 &8715873368273971798
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -76,6 +93,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4923989623824704455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191899192624175718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff5a2b9d1457814489739502bbd7f3f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.5
+  impulse: 0.356
+  xrVariables: {fileID: 11400000, guid: 003815036fb2dd747baa087e46a9a802, type: 2}
+  grab: {fileID: 6776453240360364417}
+  grabInspector: {fileID: 1674914855772933550}
 --- !u!114 &6776453240360364417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,6 +359,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1674914855772933550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191899192624175718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b4fabbcc4cfc8f49a1407be73bb8ce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactors: []
 --- !u!1 &2568801619655910991
 GameObject:
   m_ObjectHideFlags: 0

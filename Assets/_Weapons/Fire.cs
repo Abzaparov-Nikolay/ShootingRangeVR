@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Events;
 
 public class Fire : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class Fire : MonoBehaviour
     public Transform spawnBullet;
     public AudioSource fireAudio;
 
-    public static event Action pistolFire;
+    //public static event Action pistolFire;
+    public UnityEvent OnFire;
 
     [ContextMenu("Fire")]
     public void doFire()
@@ -20,6 +22,7 @@ public class Fire : MonoBehaviour
         createBullet.GetComponent<Rigidbody>().velocity = speed * spawnBullet.forward;
         fireAudio.Play();
         Destroy(createBullet, 5f);
-        pistolFire?.Invoke();
+        //pistolFire?.Invoke();
+        OnFire?.Invoke();
     }
 }

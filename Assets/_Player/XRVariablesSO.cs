@@ -13,4 +13,5 @@ public class XRVariablesSO : ScriptableObject
     public DeviceBasedSnapTurnProvider snapTurnProvider;
     public DeviceBasedContinuousTurnProvider continuousTurnProvider;
     public DeviceBasedContinuousMoveProvider continuousMoveProvider;
+    public FeedbackManager feedbackManager;
 }

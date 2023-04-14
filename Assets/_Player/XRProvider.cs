@@ -15,6 +15,7 @@ public class XRProvider : MonoBehaviour
     public DeviceBasedSnapTurnProvider snapTurnProvider;
     public DeviceBasedContinuousTurnProvider continuousTurnProvider;
     public DeviceBasedContinuousMoveProvider continuousMoveProvider;
+    public FeedbackManager feedbackManager;
 
     private void Awake()
     {
@@ -24,5 +25,6 @@ public class XRProvider : MonoBehaviour
         xrVariablesSO.snapTurnProvider = snapTurnProvider;
         xrVariablesSO.continuousTurnProvider = continuousTurnProvider;
         xrVariablesSO.continuousMoveProvider = continuousMoveProvider;
+        xrVariablesSO.feedbackManager = feedbackManager;
     }
 }
