@@ -21,6 +21,6 @@ public class ScoreTextChanger : MonoBehaviour
 
     private void ChangeScore()
     {
-        scoreText.text = score.Get().ToString();
+        scoreText.SetText("{0}", score.Get());
     }
 }

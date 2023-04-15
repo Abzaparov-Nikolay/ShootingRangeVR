@@ -14,13 +14,25 @@ public class GrabInspector : MonoBehaviour
     {
         interactors = new();
         grab = GetComponent<XRGrabInteractable>();
+    }
+
+    private void OnEnable()
+    {
         grab.selectEntered.AddListener(AddInteractingController);
         grab.selectExited.AddListener(RemoveInteractingController);
+        
+    }
+
+    private void OnDisable()
+    {
+        grab.selectEntered.RemoveListener(AddInteractingController);
+        grab.selectExited.RemoveListener(RemoveInteractingController);
     }
 
     private void AddInteractingController(SelectEnterEventArgs args)
     {
         interactors.Add(args.interactorObject.transform.gameObject.GetComponent<XRBaseController>());
+        
     }
 
     private void RemoveInteractingController(SelectExitEventArgs args)
