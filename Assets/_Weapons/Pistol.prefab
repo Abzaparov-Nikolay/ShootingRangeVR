@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b8b895b7d69df54f8dec8dad38de764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
+  speed: 20
   bulletPrefab: {fileID: 3422242703252899, guid: e5889ba7aa841534da025d07b3274df9, type: 3}
   spawnBullet: {fileID: 8064972439400972863}
   fireAudio: {fileID: 7948499711712155062}
