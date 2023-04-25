@@ -7,17 +7,20 @@ using UnityEngine.XR.Interaction.Toolkit;
 [RequireComponent(typeof(XRGrabInteractable))]
 public class GrabInspector : MonoBehaviour
 {
-    public List<XRBaseController> interactors;
+    public List<XRBaseController> interactors = new List<XRBaseController>();
     private XRGrabInteractable grab;
 
-    private void Start()
+    private void Awake()
     {
-        interactors = new();
-        grab = GetComponent<XRGrabInteractable>();
+        grab = gameObject.GetComponent<XRGrabInteractable>();
     }
 
     private void OnEnable()
     {
+        if(grab == null)
+        {
+            return;
+        }
         grab.selectEntered.AddListener(AddInteractingController);
         grab.selectExited.AddListener(RemoveInteractingController);
         
