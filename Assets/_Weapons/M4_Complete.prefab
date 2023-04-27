@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 8715873368273971798}
   - component: {fileID: 8273895854531371434}
   - component: {fileID: 95328561}
+  - component: {fileID: 4493499446566381497}
+  - component: {fileID: 8650107530222414928}
   m_Layer: 0
   m_Name: M4_Complete
   m_TagString: Untagged
@@ -57,14 +59,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b8b895b7d69df54f8dec8dad38de764, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 50
+  SingleFire: 0
+  bulletSpeed: 5
   bulletPrefab: {fileID: 3422242703252899, guid: e5889ba7aa841534da025d07b3274df9, type: 3}
-  spawnBullet: {fileID: 6133400356536054270}
-  fireAudio: {fileID: 8273895854531371434}
+  bulletSpawn: {fileID: 6133400356536054270}
+  firerate: 600
   OnFire:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 8273895854531371434}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4493499446566381497}
         m_TargetAssemblyTypeName: HapticFeedback, Assembly-CSharp
         m_MethodName: GiveFeedback
         m_Mode: 1
@@ -246,7 +261,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6022316308871666455}
         m_TargetAssemblyTypeName: Fire, Assembly-CSharp
-        m_MethodName: doFire
+        m_MethodName: StartShooting
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -258,7 +273,19 @@ MonoBehaviour:
         m_CallState: 2
   m_Deactivated:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6022316308871666455}
+        m_TargetAssemblyTypeName: Fire, Assembly-CSharp
+        m_MethodName: StopShooting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_StartingHoverFilters: []
   m_StartingSelectFilters: []
   m_StartingInteractionStrengthFilters: []
@@ -335,6 +362,36 @@ MonoBehaviour:
   m_StartingSingleGrabTransformers: []
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
+--- !u!114 &4493499446566381497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191899192624175718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff5a2b9d1457814489739502bbd7f3f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.1
+  impulse: 1
+  xrVariables: {fileID: 11400000, guid: 003815036fb2dd747baa087e46a9a802, type: 2}
+  grab: {fileID: 95328561}
+  grabInspector: {fileID: 8650107530222414928}
+--- !u!114 &8650107530222414928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 191899192624175718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b4fabbcc4cfc8f49a1407be73bb8ce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactors: []
 --- !u!1 &2568801619655910991
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,7 +545,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4121497164227188504}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0.0158, y: 0.0746, z: -0.4931}
+  m_LocalPosition: {x: 0.016, y: 0.0746, z: -0.559}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

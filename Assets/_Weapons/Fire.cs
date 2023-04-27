@@ -6,23 +6,96 @@ using UnityEngine.Events;
 
 public class Fire : MonoBehaviour
 {
-    public float speed = 10f;
+    public bool SingleFire = true;
+    public float bulletSpeed = 20f;
     public GameObject bulletPrefab;
-    public Transform spawnBullet;
-    public AudioSource fireAudio;
+    public Transform bulletSpawn;
+    public float firerate = 600;
+    private bool isShooting;
+    //float remainingBalls;
+    //Action stoppedShooting;
+    private float elapsedShootingTime;
+    private float shootDelay;
+    //public AudioSource fireAudio;
 
     //public static event Action pistolFire;
     public UnityEvent OnFire;
 
+    private void Awake()
+    {
+        shootDelay = 1000 * 60 / firerate;
+    }
+
     [ContextMenu("Fire")]
     public void doFire()
     {
-        
-        GameObject createBullet = Instantiate(bulletPrefab, spawnBullet.position, spawnBullet.rotation);
-        createBullet.GetComponent<Rigidbody>().velocity = speed * spawnBullet.forward;
-        fireAudio.Play();
+        if(!SingleFire)
+        {
+            return;
+        }
+        GameObject createBullet = Instantiate(bulletPrefab, bulletSpawn.position, bulletSpawn.rotation);
+        createBullet.GetComponent<Rigidbody>().velocity = bulletSpeed * bulletSpawn.forward;
+        //fireAudio.Play();
         Destroy(createBullet, 5f);
         //pistolFire?.Invoke();
         OnFire?.Invoke();
+    }
+
+
+
+    
+
+    private void FixedUpdate()
+    {
+        if (SingleFire || !isShooting)
+        {
+            return;
+        }
+
+        //if (remainingBalls == 0)
+        //{
+        //    isShooting = false;
+        //    stoppedShooting.Raise();
+        //    return;
+        //}
+        while (elapsedShootingTime > shootDelay / 1000)
+        {
+            elapsedShootingTime -= shootDelay / 1000;
+            Shoot(elapsedShootingTime);
+        }
+        elapsedShootingTime += Time.fixedDeltaTime;
+    }
+
+    private void Shoot(float timeAlreadyElapsed)
+    {
+        var newBall = Instantiate(bulletPrefab);
+        //newBall.transform.localScale = ballScale * Vector3.one;
+        if (newBall.TryGetComponent<Rigidbody>(out var rigidbody))
+        {
+            var ballSpeed = bulletSpeed / rigidbody.mass;
+            newBall.transform.position = bulletSpawn.position + timeAlreadyElapsed * ballSpeed * bulletSpawn.forward;
+            rigidbody.AddForce(bulletSpawn.forward * bulletSpeed, ForceMode.Impulse);
+        }
+        OnFire?.Invoke();
+        Destroy(newBall, 3);
+        //remainingBalls--;
+    }
+
+    [ContextMenu("StartFiring")]
+    public void StartShooting()
+    {
+        if (SingleFire)
+        {
+            doFire();
+        }
+        else
+        {
+            isShooting = true;
+        }
+    }
+
+    public void StopShooting()
+    {
+        isShooting = false;
     }
 }

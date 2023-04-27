@@ -42,7 +42,7 @@ Material:
     - _AlphaClip: 0.597
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Size: 11.6
+    - _Size: 17.44
     m_Colors:
     - _Color: {r: 1, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
