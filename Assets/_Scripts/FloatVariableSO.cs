@@ -26,4 +26,9 @@ public class FloatVariableSO : ScriptableObject
     {
         this.Set(initialValue);
     }
+
+    public void ResetValue()
+    {
+        this.Set(initialValue);
+    }
 }
