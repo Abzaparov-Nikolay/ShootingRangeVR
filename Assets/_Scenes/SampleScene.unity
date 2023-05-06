@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.5444161, g: 0.5070113, b: 0.5242729, a: 1}
+  m_IndirectSpecularColor: {r: 0.5444019, g: 0.50700164, b: 0.5242697, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1196,6 +1196,17 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 1933749919788509124, guid: 359775b525fa9d649bb5b7a181ea08dd, type: 3}
   m_PrefabInstance: {fileID: 1052024533}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &749616783 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2343617196659533642, guid: 359775b525fa9d649bb5b7a181ea08dd, type: 3}
+  m_PrefabInstance: {fileID: 1052024533}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e4e6cca11330d4088d729ab4fc9d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &926447436
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2100,5 +2111,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button
       objectReference: {fileID: 0}
+    - target: {fileID: 5668362086692001234, guid: 6da62faec8b756a46b652f68add1fb2b, type: 3}
+      propertyPath: Pressed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 719197306}
+    - target: {fileID: 5668362086692001234, guid: 6da62faec8b756a46b652f68add1fb2b, type: 3}
+      propertyPath: Pressed.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 684901585}
+    - target: {fileID: 6187329223655335552, guid: 6da62faec8b756a46b652f68add1fb2b, type: 3}
+      propertyPath: m_InteractionManager
+      value: 
+      objectReference: {fileID: 749616783}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6da62faec8b756a46b652f68add1fb2b, type: 3}
