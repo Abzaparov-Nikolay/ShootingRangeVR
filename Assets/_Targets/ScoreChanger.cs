@@ -10,4 +10,9 @@ public class ScoreChanger : MonoBehaviour
     {
         score.Add(AddValue);
     }
+
+    public void ResetScore()
+    {
+        score.ResetValue();
+    }
 }

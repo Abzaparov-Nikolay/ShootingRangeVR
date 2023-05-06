@@ -64,6 +64,7 @@ public class TargetSpawner : MonoBehaviour
         Targets.Add(spawnedTarget);
         var death = spawnedTarget.GetComponent<Death>();
         death.onDestroy.AddListener(RemoveDestroyedTarget);
-        death.OnDeath.AddListener(timer.StartIfPaused);
+        var health = spawnedTarget.GetComponent<Health>();
+        health.OnDamaged.AddListener(timer.StartIfPaused);
     }
 }
