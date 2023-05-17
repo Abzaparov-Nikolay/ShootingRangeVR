@@ -72,9 +72,10 @@ public class Fire : MonoBehaviour
         //newBall.transform.localScale = ballScale * Vector3.one;
         if (newBall.TryGetComponent<Rigidbody>(out var rigidbody))
         {
-            var ballSpeed = bulletSpeed / rigidbody.mass;
-            newBall.transform.position = bulletSpawn.position + timeAlreadyElapsed * ballSpeed * bulletSpawn.forward;
-            rigidbody.AddForce(bulletSpawn.forward * bulletSpeed, ForceMode.Impulse);
+            //var ballSpeed = bulletSpeed / rigidbody.mass;
+            newBall.transform.position = bulletSpawn.position;// + timeAlreadyElapsed * bulletSpeed * bulletSpawn.forward;
+            rigidbody.velocity = bulletSpawn.forward * bulletSpeed;
+           // rigidbody.AddForce(bulletSpawn.forward * bulletSpeed, ForceMode.VelocityChange);
         }
         OnFire?.Invoke();
         Destroy(newBall, 3);
