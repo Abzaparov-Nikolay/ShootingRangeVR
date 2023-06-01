@@ -7,7 +7,7 @@ public class Death : MonoBehaviour
 {
     public UnityEvent OnDeath;
     public bool DestroyOnDeath = true;
-    public UnityEvent<object> onDestroy;
+    public UnityEvent<GameObject> onDestroy;
     
     private void OnDestroy()
     {
